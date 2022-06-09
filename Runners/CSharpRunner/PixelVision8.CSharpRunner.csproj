@@ -10,6 +10,7 @@
 	    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	    <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <PropertyGroup>

@@ -10,6 +10,7 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -30,9 +31,9 @@
 
 	<!-- Shared paths -->
 	<PropertyGroup>
-		<SDK>../../SDK/</SDK>
-		<Platforms>$(SDK)/Platforms/</Platforms>
-		<Game>../../Build/Templates/EmptyDisk</Game>
+		<RunnerSDK>..\..\SDK\</RunnerSDK>
+		<RunnerPlatforms>$(RunnerSDK)\Platforms\</RunnerPlatforms>
+		<Game>..\..\Build\Templates\EmptyDisk</Game>
 	</PropertyGroup>
 
 	<!-- Icons -->
@@ -43,7 +44,7 @@
 
 	<!-- Copy the game files to the content folder-->
 	<ItemGroup>
-		<Content Include="$(Game)/**/*.*">
+		<Content Include="$(Game)\**\*.*">
 			<Link>Content/%(RecursiveDir)%(Filename)%(Extension)</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
@@ -51,32 +52,32 @@
 			<Link>Content/%(RecursiveDir)%(Filename)%(Extension)</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-		<Content Remove="$(Game)/**/*.lua" />
-		<Content Remove="**/saves.json" />
+		<Content Remove="$(Game)\**\*.lua" />
+		<Content Remove="**\saves.json" />
 	</ItemGroup>
 
 	<!-- Program and runner class-->
 	<ItemGroup>
 		<Compile Include="Program.cs" />
-		<Compile Include="$(Platforms)Runner/RoslynRunner.cs">
-			<Link>SDK/Runner/RoslynRunner.cs</Link>
+		<Compile Include="$(RunnerPlatforms)Runner\RoslynRunner.cs">
+			<Link>SDK/Runner\RoslynRunner.cs</Link>
 		</Compile>
 	</ItemGroup>
 
 	<!-- Mono Game Specific Classes -->
 	<ItemGroup>
-		<Compile Include="$(Platforms)**/*.MonoGame.cs">
-			<Link>SDK/Platform/%(RecursiveDir)%(Filename)%(Extension)</Link>
+		<Compile Include="$(RunnerPlatforms)**\*.MonoGame.cs">
+			<Link>SDK\Platform\%(RecursiveDir)%(Filename)%(Extension)</Link>
 		</Compile>
 	</ItemGroup>
 
 	<!-- Core Pixel Vision 8 Classes -->
 	<ItemGroup>
-		<Compile Include="$(SDK)Player/**/*.cs" Exclude="$(SDK)Player/Chips/Audio/SoundChannel.cs">
-			<Link>SDK/Player/%(RecursiveDir)%(Filename)%(Extension)</Link>
+		<Compile Include="$(RunnerSDK)Player\**\*.cs" Exclude="$(RunnerSDK)Player\Chips\Audio\SoundChannel.cs">
+			<Link>SDK\Player\%(RecursiveDir)%(Filename)%(Extension)</Link>
 		</Compile>
-		<Compile Include="$(SDK)Runner/**/*.*cs">
-			<Link>SDK/Runner/%(RecursiveDir)%(Filename)%(Extension)</Link>
+		<Compile Include="$(RunnerSDK)Runner\**\*.*cs">
+			<Link>SDK/Runner\%(RecursiveDir)%(Filename)%(Extension)</Link>
 		</Compile>
 	</ItemGroup>
 

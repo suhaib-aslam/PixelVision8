@@ -10,6 +10,7 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -60,7 +61,7 @@
 	<ItemGroup>
 		<Compile Include="Program.cs" />
 		<Compile Include="$(RunnerPlatforms)Runner\LuaRunner.cs">
-			<Link>SDK/Runner/LuaRunner.cs</Link>
+			<Link>SDK\Runner\LuaRunner.cs</Link>
 		</Compile>
 	</ItemGroup>
 
